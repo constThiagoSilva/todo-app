@@ -1,3 +1,4 @@
+import { Input } from "../../../components/Input";
 import { Container, Content, FormContainer } from "./styles";
 
 export const LoginPage = () => {
@@ -9,7 +10,7 @@ export const LoginPage = () => {
             <fieldset>
                 <div className="form-container">
                     <label htmlFor="email">E-mail</label>
-                    <input type="email" name="email" id="email" />
+                    <input type='email' name="email" id="email" />
                 </div>
                 <div className="form-container">
                     <label htmlFor="password">Password</label>
