@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const Container = styled.input`
     width: 100%;
-    height: 2.5rem;
+    height: 3rem;
 
-    padding: 10px;
+    padding: 20px 10px;
 
     border: 1px solid #ccc;
     border-radius: 10px;
