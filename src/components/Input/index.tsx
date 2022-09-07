@@ -2,7 +2,7 @@ import React, { InputHTMLAttributes } from "react";
 import { Container } from "./styles";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  type: "email" | "password";
+  type: "name" | "email" | "password";
   pleceholder: string;
   value: string | number;
   onChangeText: (event: React.ChangeEvent<HTMLInputElement>) => void;
