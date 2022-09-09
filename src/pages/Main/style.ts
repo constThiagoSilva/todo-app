@@ -1,71 +1,71 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  header {
     width: 100%;
-    height: 100vh;
+    height: 8vh;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    .center {
+      width: 80%;
+      height: 100%;
 
-    header {
-        width: 100%;
-        height: 8vh;
+      margin: 0 auto;
 
-        .center {
-            width: 80%;
-            height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-            margin: 0 auto;
+      nav {
+        width: 80%;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;    
-            
-            nav {
-                width: 80%;
+        display: flex;
+        justify-content: space-between;
 
-                display: flex;
-                justify-content: space-between;
+        a {
+          text-decoration: none;
 
-                a {
-                    text-decoration: none;
+          color: black;
+          padding: 10px;
+          width: 100px;
 
-                    color: black;
-                    padding: 10px;
-                    width: 100px;
+          text-align: center;
 
-                    text-align: center;
+          border-radius: 10px;
 
-                    border-radius: 10px;
+          margin-right: 20px;
 
-                    margin-right: 20px;
-
-                    &:hover {
-                        background-color: #eee;
-                    }
-                }
-            }
+          &:hover {
+            background-color: #eee;
+          }
         }
-
-        .add-task-button-container {
-            width: 5rem;
-        }
-
+      }
     }
-`
+
+    .add-task-button-container {
+      width: 5rem;
+    }
+  }
+`;
 
 export const Content = styled.main`
-    width: 80%;
-    flex: 1;
-
-`
-
-export const AddTaskContainer = styled.section`
-
-`
+  width: 80%;
+  flex: 1;
+`;
 
 export const TaskListContaner = styled.section`
+  width: 100%;
+  height: 84vh;
+  flex: 1;
 
-`
+  margin-top: 1.5rem;
+
+  padding: 20px;
+`;

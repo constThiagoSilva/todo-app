@@ -1,6 +1,5 @@
 import { Button } from "../../components/Button";
 import {
-  AddTaskContainer,
   Container,
   Content,
   TaskListContaner,
@@ -11,7 +10,6 @@ export const MainPage = () => {
     <Container>
       <header>
         <div className="center">
-
         <nav>
           <span>Todo App</span>
           <a href="#">Sair</a>
@@ -22,8 +20,9 @@ export const MainPage = () => {
         </div>
       </header>
       <Content>
-        <AddTaskContainer></AddTaskContainer>
-        <TaskListContaner></TaskListContaner>
+        <TaskListContaner>
+          a
+        </TaskListContaner>
       </Content>
     </Container>
   );
