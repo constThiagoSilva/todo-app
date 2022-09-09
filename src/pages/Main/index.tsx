@@ -3,6 +3,7 @@ import { Modal } from "../../assets/Modal";
 import { Button } from "../../components/Button";
 import { TaskItem } from "../../components/TaskItem";
 import { ITask } from "../../interfaces/models/ITask";
+import { AddTaskPage } from "./AddTask";
 import {
   Container,
   Content,
@@ -48,9 +49,7 @@ export const MainPage = () => {
           }
         </TaskListContaner>
       </Content>
-      <Modal isOpen={isOpen} onClose={handleCloseModal}>
-        OLa
-      </Modal>
+      <AddTaskPage isOpen={isOpen} onClose={handleCloseModal}/>
     </Container>
   );
 };
