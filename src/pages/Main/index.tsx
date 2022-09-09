@@ -1,4 +1,6 @@
 import { Button } from "../../components/Button";
+import { TaskItem } from "../../components/TaskItem";
+import { ITask } from "../../interfaces/models/ITask";
 import {
   Container,
   Content,
@@ -6,6 +8,20 @@ import {
 } from "./style";
 
 export const MainPage = () => {
+  const DATA: ITask[] = [
+    {
+      id: 1,
+      userId: 1,
+      title: 'Ler',
+      situation: false,
+    },
+    {
+      id: 2,
+      userId: 1,
+      title: 'Ler',
+      situation: true,
+    }
+  ]
   return (
     <Container>
       <header>
@@ -21,7 +37,9 @@ export const MainPage = () => {
       </header>
       <Content>
         <TaskListContaner>
-          a
+          {
+            DATA.map(task => <TaskItem task={task}/>)
+          }
         </TaskListContaner>
       </Content>
     </Container>
