@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { Modal } from "../../assets/Modal";
 import { Button } from "../../components/Button";
 import { TaskItem } from "../../components/TaskItem";
 import { ITask } from "../../interfaces/models/ITask";
@@ -8,6 +10,7 @@ import {
 } from "./style";
 
 export const MainPage = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const DATA: ITask[] = [
     {
       id: 1,
@@ -22,6 +25,9 @@ export const MainPage = () => {
       situation: true,
     }
   ]
+
+  const handleOpenModal = () => setIsOpen(true)
+  const handleCloseModal = () => setIsOpen(false)
   return (
     <Container>
       <header>
@@ -31,17 +37,20 @@ export const MainPage = () => {
           <a href="#">Sair</a>
         </nav>
         <div className="add-task-button-container">
-          <Button title="Tarefa" onCLick={(event) => console.log(event)} />
+          <Button title="Tarefa" onCLick={(event) => handleOpenModal()} />
         </div>
         </div>
       </header>
       <Content>
         <TaskListContaner>
           {
-            DATA.map(task => <TaskItem task={task}/>)
+            DATA.map(task => <TaskItem key={task.id} task={task}/>)
           }
         </TaskListContaner>
       </Content>
+      <Modal isOpen={isOpen} onClose={handleCloseModal}>
+        OLa
+      </Modal>
     </Container>
   );
 };
