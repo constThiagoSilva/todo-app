@@ -1,12 +1,11 @@
-import { LoginPage } from "./pages/Auth/Login"
-import { RegisterPage } from "./pages/Auth/Register"
-import { MainPage } from "./pages/Main"
+import {BrowserRouter as Router} from 'react-router-dom'
+import { MainRoutes } from './routes/MainRoutes'
 
 function App() {
   return (
-    <>
-      <MainPage/>
-    </>
+    <Router>
+      <MainRoutes/>
+    </Router>
   )
 }
 
