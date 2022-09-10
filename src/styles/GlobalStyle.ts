@@ -20,4 +20,7 @@ export const GlobalStyle = createGlobalStyle`
         outline: 0;
         box-shadow: 0;
     }
+    a {
+        cursor: pointer;
+    }
 `

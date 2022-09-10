@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {useNavigate} from 'react-router-dom'
 import { Button } from "../../../components/Button";
 import { Input } from "../../../components/Input";
 import { Container, Content, FormContainer } from "./styles";
@@ -6,6 +7,9 @@ import { Container, Content, FormContainer } from "./styles";
 export const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate()
+
+    const handleDirectToRegisterPage = () => navigate('/auth/register')
 
   return (
     <Container>
@@ -23,7 +27,7 @@ export const LoginPage = () => {
                 </div>
                 <Button title="Login" onCLick={(event) => console.log(event)}/>
             </fieldset>
-            <span><p>Não tem uma conta? <a href="#">Cadastre-se</a></p></span>
+            <span><p>Não tem uma conta? <a onClick={handleDirectToRegisterPage}>Cadastre-se</a></p></span>
         </FormContainer>
       </Content>
     </Container>

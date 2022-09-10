@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {useNavigate} from 'react-router-dom'
 import { Button } from "../../../components/Button"
 import { Input } from "../../../components/Input"
 import { Container, Content, FormContainer } from "./styles"
@@ -7,6 +8,9 @@ export const RegisterPage = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate()
+
+    const handleDIrectToRegisterPage = () => navigate('/auth/login')
 
     return (
         <Container>
@@ -28,7 +32,7 @@ export const RegisterPage = () => {
                 </div>
                 <Button title="Login" onCLick={(event) => console.log(event)}/>
             </fieldset>
-            <span><p>Já tem uma conta? <a href="#">Entre!</a></p></span>
+            <span><p>Já tem uma conta? <a onClick={handleDIrectToRegisterPage}>Entre!</a></p></span>
         </FormContainer>
       </Content>
     </Container>
