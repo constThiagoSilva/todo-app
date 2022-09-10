@@ -3,12 +3,10 @@ import { Content, Overlay } from "./styles";
 
 interface ModalProps {
   children: ReactNode;
-  isOpen: boolean;
   onClose: () => void
 }
 
-export const Modal = ({ children, isOpen, onClose }: ModalProps) => {
-  if (!isOpen) return null;
+export const Modal = ({ children, onClose }: ModalProps) => {
 
   return (
     <Overlay>

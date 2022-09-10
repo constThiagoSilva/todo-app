@@ -1,14 +1,13 @@
-import { Modal } from "../../../assets/Modal"
+import { useContext } from "react"
+import { Modal } from "../../../components/Modal"
+import { IModelContext, ModalContext } from "../../../contexts/Modal/ModalContext"
 
-interface AddTaskProps {
-    isOpen: boolean;
-    onClose: () => void
-}
 
-export const AddTaskPage = ({isOpen, onClose}: AddTaskProps) => {
+export const AddTaskPage = () => {
+    const context = useContext(ModalContext) as IModelContext
     return (
-        <Modal isOpen={isOpen} onClose={onClose}>  
+        <Modal onClose={context.onClose}>  
             aaaaaa
         </Modal>
     )
-}
+}   

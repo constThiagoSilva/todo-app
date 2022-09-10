@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { Modal } from "../../assets/Modal";
+import { useContext } from "react";
 import { Button } from "../../components/Button";
+import {Outlet} from 'react-router-dom'
 import { TaskItem } from "../../components/TaskItem";
+import { IModelContext, ModalContext } from "../../contexts/Modal/ModalContext";
 import { ITask } from "../../interfaces/models/ITask";
-import { AddTaskPage } from "./AddTask";
 import {
   Container,
   Content,
@@ -11,7 +11,7 @@ import {
 } from "./style";
 
 export const MainPage = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const context = useContext(ModalContext) as IModelContext
   const DATA: ITask[] = [
     {
       id: 1,
@@ -27,8 +27,6 @@ export const MainPage = () => {
     }
   ]
 
-  const handleOpenModal = () => setIsOpen(true)
-  const handleCloseModal = () => setIsOpen(false)
   return (
     <Container>
       <header>
@@ -38,7 +36,7 @@ export const MainPage = () => {
           <a href="#">Sair</a>
         </nav>
         <div className="add-task-button-container">
-          <Button title="Tarefa" onCLick={(event) => handleOpenModal()} />
+          <Button title="Tarefa" onCLick={(event) => context.onOpen()} />
         </div>
         </div>
       </header>
@@ -49,7 +47,7 @@ export const MainPage = () => {
           }
         </TaskListContaner>
       </Content>
-      <AddTaskPage isOpen={isOpen} onClose={handleCloseModal}/>
+      <Outlet/>
     </Container>
   );
 };
