@@ -24,7 +24,7 @@ export const RegisterPage = () => {
             })
 
             setUser(user)
-            localStorage.setItem('token', token)
+            localStorage.setItem('token', `Bearer ${token}`)
             localStorage.setItem('user', JSON.stringify(user))
             api.defaults.headers = {authorization: `Bearer ${token}`} as CommomHeaderProperties
 

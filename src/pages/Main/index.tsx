@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Button } from "../../components/Button";
 import {Outlet} from 'react-router-dom'
 import { TaskItem } from "../../components/TaskItem";
@@ -10,24 +10,13 @@ import {
   TaskListContaner,
 } from "./style";
 import { AuthContext, IAuthContext } from "../../contexts/Auth/AuthContext";
+import { ITasksContext, TaskContext } from "../../contexts/Tasks/TasksContext";
+import { api } from "../../service/api";
 
 export const MainPage = () => {
   const context = useContext(ModalContext) as IModelContext
   const {user} = useContext(AuthContext) as IAuthContext
-  const DATA: ITask[] = [
-    {
-      id: 1,
-      userId: 1,
-      title: 'Ler',
-      situation: false,
-    },
-    {
-      id: 2,
-      userId: 1,
-      title: 'Ler',
-      situation: true,
-    }
-  ]
+  const {tasks, setTasks} = useContext(TaskContext) as ITasksContext
 
   return (
     <Container>
@@ -46,7 +35,7 @@ export const MainPage = () => {
       <Content>
         <TaskListContaner>
           {
-            DATA.map(task => <TaskItem key={task.id} task={task}/>)
+            tasks?.map(task => <TaskItem key={task.id} task={task}/>)
           }
         </TaskListContaner>
       </Content>
