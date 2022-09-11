@@ -9,9 +9,11 @@ import {
   Content,
   TaskListContaner,
 } from "./style";
+import { AuthContext, IAuthContext } from "../../contexts/Auth/AuthContext";
 
 export const MainPage = () => {
   const context = useContext(ModalContext) as IModelContext
+  const {user} = useContext(AuthContext) as IAuthContext
   const DATA: ITask[] = [
     {
       id: 1,
@@ -40,6 +42,7 @@ export const MainPage = () => {
         </div>
         </div>
       </header>
+      <h1>{user?.name}</h1>
       <Content>
         <TaskListContaner>
           {
