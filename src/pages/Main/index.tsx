@@ -11,12 +11,30 @@ import {
 } from "./style";
 import { AuthContext, IAuthContext } from "../../contexts/Auth/AuthContext";
 import { ITasksContext, TaskContext } from "../../contexts/Tasks/TasksContext";
-import { api } from "../../service/api";
+import { api, privateApi } from "../../service/api";
 
 export const MainPage = () => {
   const context = useContext(ModalContext) as IModelContext
   const {user} = useContext(AuthContext) as IAuthContext
   const {tasks, setTasks} = useContext(TaskContext) as ITasksContext
+
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        const user = JSON.parse(localStorage.getItem("user") || "{}");
+        const {
+          data: { tasks },
+        } = await privateApi.post<{ tasks: ITask[] }>(`/task/list/${user?.id}`);
+
+        console.log(tasks, 'fist')
+
+        setTasks([...tasks]);
+      } catch (error) {
+        console.log(error)
+      }
+    };
+    fetch();
+  }, []);
 
   return (
     <Container>

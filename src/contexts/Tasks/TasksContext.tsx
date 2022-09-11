@@ -7,11 +7,12 @@ import React, {
   useState,
 } from "react";
 import { ITask } from "../../interfaces/models/ITask";
-import { api } from "../../service/api";
+import { api, privateApi } from "../../service/api";
 
 export interface ITasksContext {
   tasks: ITask[] | null;
   setTasks: React.Dispatch<SetStateAction<ITask[] | null>>;
+  addTasks: ({title, userId}: {title: string, userId: number}) => void;
 }
 
 interface TasksProviderProps {
@@ -23,20 +24,20 @@ export const TaskContext = createContext<ITasksContext | null>(null);
 export const TasksProvider = ({ children }: TasksProviderProps) => {
   const [tasks, setTasks] = useState<ITask[] | null>(null);
 
-  useEffect(() => {
-    const fetch = async () => {
-      const user = JSON.parse(localStorage.getItem('user') || '{}')
-      const {data: {tasks}} = await api.post<{tasks: ITask[]}>(`/task/list/${user?.id}`)
+  
 
+  const addTasks = async ({title, userId}: {title: string, userId: number}) => {
+    try {
+      const {data} = await privateApi.post<{task: ITask}>(`/task/add/${userId}`)
 
-      setTasks([...tasks])
-
+      console.log(data)
+    } catch (error) {
+      
     }
-    fetch()
-  }, []);
+  };
 
   return (
-    <TaskContext.Provider value={{ tasks, setTasks }}>
+    <TaskContext.Provider value={{ tasks, setTasks, addTasks }}>
       {children}
     </TaskContext.Provider>
   );
